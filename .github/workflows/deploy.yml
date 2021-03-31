@@ -1,0 +1,29 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  Deploy:
+    name: Deploy to Heroku
+    runs-on: ubuntu-20.04
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Make the Discord Token file
+        env:
+          TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        run: |
+          echo "$TOKEN" > token.txt
+
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API }}
+          heroku_app_name: "discord-bot-in-python"
+          heroku_email: "${{ secrets.HEROKU_USERNAME }}"
+          usedocker: true
+          docker_heroku_process_type: worker
