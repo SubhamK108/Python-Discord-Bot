@@ -1,4 +1,5 @@
 import discord
+import random
 
 # Your Discord Bot Token
 TOKEN_FILE = open(r"token.txt", "r")
@@ -20,5 +21,24 @@ async def on_message(message):
 
     if content.startswith("!hello"):
         await channel.send("Bot says Hello!")
+
+    if content.startswith("!whoami"):
+        user = channel.author.name
+        await channel.send(user)
+    
+    if content.startswith("!coinflip"):
+        choices = ["Heads", "Tails"]
+        rancoin = random.choice(choices)
+        await channel.send(rancoin)
+    
+    if content.startswith("!chooseside"):
+        choices = ["Attack", "Defend"]
+        ranside = random.choice(choices)
+        await channel.send(ranside)
+
+    if content.startswith("!givemeanemoji"):
+        choices = ["😀", "😁", "😂", "🤣", "😎", "🤐", "😆"]
+        emoji = random.choice(choices)
+        await channel.send(emoji)
 
 client.run(TOKEN)
