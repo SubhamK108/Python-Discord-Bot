@@ -1,44 +1,66 @@
 import discord
+from discord import Message, User
+from discord.channel import TextChannel
+from discord.ext.commands import Bot, Context
 import random
+import os
 
-# Your Discord Bot Token
-TOKEN_FILE = open(r"token.txt", "r")
-TOKEN = f"{TOKEN_FILE.readline()}"
+# Set The Random Seed
+random.seed(os.urandom(1024))
 
-client = discord.Client()
+# Your Discord Bot token should be stored in a file named token.txt
+# TOKEN_FILE = open(r"token.txt", "r")
+# TOKEN = f"{TOKEN_FILE.readline()}"
+TOKEN = "ODI1OTYzODcxODUxNTExODE4.YGFkzA.yRt1oZbSqQralSzCHx8MtDXhwCM"
 
-@client.event
-async def on_ready():
-    print(f"A Bot logged in as {client.user}")
+prefix = "!"
+description = "A Bot made by Rohan and Subham"
+bot = Bot(command_prefix = prefix, description = description)
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
+@bot.event
+async def on_ready() -> None:
+    print(f"A Bot logged in as {bot.user}")
+
+@bot.event
+async def on_message(message: Message) -> None:
+    user: User = message.author
+    # Don't reply to own messages or any message coming from another bot
+    if user == bot.user or user.bot:
         return
-    
-    content = message.content
-    channel = message.channel
+    await bot.process_commands(message)
 
-    if content.startswith("!hello"):
-        await channel.send("Bot says Hello!")
+@bot.command(aliases = ["hi", "sup"])
+async def hello(context: Context) -> None:
+    user: User = context.author
+    await context.send(f"Bot says hello to {user.name}")
 
-    if content.startswith("!whoami"):
-        user = channel.author.name
-        await channel.send(user)
-    
-    if content.startswith("!coinflip"):
-        choices = ["Heads", "Tails"]
-        rancoin = random.choice(choices)
-        await channel.send(rancoin)
-    
-    if content.startswith("!chooseside"):
-        choices = ["Attack", "Defend"]
-        ranside = random.choice(choices)
-        await channel.send(ranside)
+@bot.command()
+async def whoami(context: Context) -> None:
+    user: User = context.author
+    await context.send(f"You are {user.name}")
 
-    if content.startswith("!givemeanemoji"):
-        choices = ["😀", "😁", "😂", "🤣", "😎", "🤐", "😆"]
-        emoji = random.choice(choices)
-        await channel.send(emoji)
+@bot.command(aliases = ["flipcoin", "tosscoin", "cointoss"])
+async def coinflip(context: Context) -> None:
+    choices = ["Heads", "Tails"]
+    ranchoice = random.choice(choices)
+    await context.send(ranchoice)
 
-client.run(TOKEN)
+@bot.command()
+async def chooseside(context: Context) -> None:
+    choices = ["Attack", "Defend"]
+    ranside = random.choice(choices)
+    await context.send(ranside)
+
+@bot.command()
+async def choosemap(context: Context) -> None:
+    choices = ["Ascent", "Split", "Bind", "Haven", "Icebox"]
+    ranmap = random.choice(choices)
+    await context.send(ranmap)
+
+@bot.command()
+async def givemeanemoji(context: Context) -> None:
+    choices = ["😀", "😁", "😂", "🤣", "😎", "🤐", "😆"]
+    ranemoji = random.choice(choices)
+    await context.send(ranemoji)
+
+bot.run(TOKEN)
