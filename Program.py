@@ -9,7 +9,9 @@ import requests
 # Set The Random Seed
 random.seed(os.urandom(1024))
 
-# Your Discord Bot token should be stored in a file named token.txt
+# Your Discord Bot token should be stored in a file named "token.txt" in 
+# the root directory. "token.txt" is already added in the .gitignore 
+# file, so it won't be tracked by Git.
 TOKEN_FILE = open(r"token.txt", "r")
 TOKEN = TOKEN_FILE.readline()
 
