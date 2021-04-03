@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Make the Discord Token file
+      - name: Create the Discord Token file
         env:
           TOKEN: ${{ secrets.DISCORD_TOKEN }}
         run: |
@@ -27,3 +27,7 @@ jobs:
           heroku_email: "${{ secrets.HEROKU_USERNAME }}"
           usedocker: true
           docker_heroku_process_type: worker
+          
+      - name: Delete the Discord Token file
+        run: |
+          rm token.txt
