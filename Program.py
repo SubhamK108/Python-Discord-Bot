@@ -76,4 +76,11 @@ async def inspire(context: Context) -> None:
     quote = f"{json['content']} \n - {json['author']}"
     await context.send(quote)
 
+@bot.command(aliases = ["tips"])
+async def advice(context: Context) -> None:
+    response = requests.get("https://api.adviceslip.com/advice")
+    json = response.json()
+    advice = json["slip"]["advice"]
+    await context.send(advice)
+
 bot.run(TOKEN)
