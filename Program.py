@@ -4,13 +4,14 @@ from discord.channel import TextChannel
 from discord.ext.commands import Bot, Context
 import random
 import os
+import requests
 
 # Set The Random Seed
 random.seed(os.urandom(1024))
 
 # Your Discord Bot token should be stored in a file named token.txt
 TOKEN_FILE = open(r"token.txt", "r")
-TOKEN = f"{TOKEN_FILE.readline()}"
+TOKEN = TOKEN_FILE.readline()
 
 prefix = "!"
 description = "A Bot made by Rohan and Subham"
@@ -67,5 +68,12 @@ async def givemeanemoji(context: Context) -> None:
     choices = ["😀", "😁", "😂", "🤣", "😎", "🤐", "😆", "😥", "😑", "🤩", "😴"]
     ranemoji = random.choice(choices)
     await context.send(ranemoji)
+
+@bot.command(aliases = ["quote"])
+async def inspire(context: Context) -> None:
+    response = requests.get("https://api.quotable.io/random")
+    json = response.json()
+    quote = f"{json['content']} \n - {json['author']}"
+    await context.send(quote)
 
 bot.run(TOKEN)
