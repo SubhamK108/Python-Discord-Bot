@@ -9,9 +9,11 @@ import requests
 # Set The Random Seed
 random.seed(os.urandom(1024))
 
-# Your Discord Bot token should be stored in a file named "token.txt" in 
-# the root directory. "token.txt" is already added in the .gitignore 
-# file, so it won't be tracked by Git.
+""" 
+Your Discord Bot token should be stored in a file named "token.txt" in 
+the root directory. "token.txt" is already added in the .gitignore 
+file, so it won't be tracked by Git. 
+"""
 TOKEN_FILE = open(r"token.txt", "r")
 TOKEN = TOKEN_FILE.readline()
 
@@ -84,5 +86,64 @@ async def advice(context: Context) -> None:
     json = response.json()
     advice = json["slip"]["advice"]
     await context.send(advice)
+
+""" 
+Following commands are temporarily made to greet Happy Birthday to one of 
+our friends. These will be removed after some time.
+"""
+
+@bot.command()
+async def deb(context: Context) -> None:
+    file = open(r"./messages/deb.txt", "r")
+    text1 = "Deb Daipayan is wishing Monosij Happy Birthday..."
+    text2 = file.read()
+    await context.send(text1)
+    await context.send(text2)
+    file.close()
+
+@bot.command()
+async def debayan(context: Context) -> None:
+    file = open(r"./messages/debayan.txt", "r")
+    text1 = "Debayan is wishing Monosij Happy Birthday..."
+    text2 = file.read()
+    await context.send(text1)
+    await context.send(text2)
+    file.close()
+
+@bot.command()
+async def rishi(context: Context) -> None:
+    file = open(r"./messages/rishi.txt", "r")
+    text1 = "Rishi is wishing Monosij Happy Birthday..."
+    text2 = file.read()
+    await context.send(text1)
+    await context.send(text2)
+    file.close()
+
+@bot.command()
+async def rohan(context: Context) -> None:
+    file = open(r"./messages/rohan.txt", "r")
+    text1 = "Rohan is wishing Monosij Happy Birthday..."
+    text2 = file.read()
+    await context.send(text1)
+    await context.send(text2)
+    file.close()
+
+@bot.command()
+async def srijita(context: Context) -> None:
+    file = open(r"./messages/srijita.txt", "r")
+    text1 = "Srijita is wishing Monosij Happy Birthday..."
+    text2 = file.read()
+    await context.send(text1)
+    await context.send(text2)
+    file.close()
+
+@bot.command()
+async def subhamk(context: Context) -> None:
+    file = open(r"./messages/subhamk.txt", "r")
+    text1 = "Subham is wishing Monosij Happy Birthday..."
+    text2 = file.read()
+    await context.send(text1)
+    await context.send(text2)
+    file.close()
 
 bot.run(TOKEN)
