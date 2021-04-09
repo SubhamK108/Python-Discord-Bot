@@ -95,7 +95,11 @@ our friends. These will be removed after some time.
 @bot.command()
 async def deb(context: Context) -> None:
     file = open(r"./messages/deb.txt", "r")
+<<<<<<< HEAD
     text1 = "🎉🎉🎉 Deb Daipayan is wishing Monosij Happy Birthday 🎉🎉🎉"
+=======
+    text1 = "Deb Daipayan is wishing Monosij Happy Birthday..."
+>>>>>>> 6cfa0ce6082462e6fd5858ff7e3e61fe4b87f34a
     text2 = file.read()
     await context.send(text1)
     await context.send(text2)
@@ -104,7 +108,11 @@ async def deb(context: Context) -> None:
 @bot.command()
 async def debayan(context: Context) -> None:
     file = open(r"./messages/debayan.txt", "r")
+<<<<<<< HEAD
     text1 = "🎉🎉🎉 Debayan is wishing Monosij Happy Birthday 🎉🎉🎉"
+=======
+    text1 = "Debayan is wishing Monosij Happy Birthday..."
+>>>>>>> 6cfa0ce6082462e6fd5858ff7e3e61fe4b87f34a
     text2 = file.read()
     await context.send(text1)
     await context.send(text2)
@@ -113,7 +121,11 @@ async def debayan(context: Context) -> None:
 @bot.command()
 async def rishi(context: Context) -> None:
     file = open(r"./messages/rishi.txt", "r")
+<<<<<<< HEAD
     text1 = "🎉🎉🎉 Rishi is wishing Monosij Happy Birthday 🎉🎉🎉"
+=======
+    text1 = "Rishi is wishing Monosij Happy Birthday..."
+>>>>>>> 6cfa0ce6082462e6fd5858ff7e3e61fe4b87f34a
     text2 = file.read()
     await context.send(text1)
     await context.send(text2)
@@ -122,7 +134,11 @@ async def rishi(context: Context) -> None:
 @bot.command()
 async def rohan(context: Context) -> None:
     file = open(r"./messages/rohan.txt", "r")
+<<<<<<< HEAD
     text1 = "🎉🎉🎉 Rohan is wishing Monosij Happy Birthday 🎉🎉🎉"
+=======
+    text1 = "Rohan is wishing Monosij Happy Birthday..."
+>>>>>>> 6cfa0ce6082462e6fd5858ff7e3e61fe4b87f34a
     text2 = file.read()
     await context.send(text1)
     await context.send(text2)
@@ -131,7 +147,11 @@ async def rohan(context: Context) -> None:
 @bot.command()
 async def srijita(context: Context) -> None:
     file = open(r"./messages/srijita.txt", "r")
+<<<<<<< HEAD
     text1 = "🎉🎉🎉 Srijita is wishing Monosij Happy Birthday 🎉🎉🎉"
+=======
+    text1 = "Srijita is wishing Monosij Happy Birthday..."
+>>>>>>> 6cfa0ce6082462e6fd5858ff7e3e61fe4b87f34a
     text2 = file.read()
     await context.send(text1)
     await context.send(text2)
@@ -140,7 +160,11 @@ async def srijita(context: Context) -> None:
 @bot.command()
 async def subhamk(context: Context) -> None:
     file = open(r"./messages/subhamk.txt", "r")
+<<<<<<< HEAD
     text1 = "🎉🎉🎉 Subham is wishing Monosij Happy Birthday 🎉🎉🎉"
+=======
+    text1 = "Subham is wishing Monosij Happy Birthday..."
+>>>>>>> 6cfa0ce6082462e6fd5858ff7e3e61fe4b87f34a
     text2 = file.read()
     await context.send(text1)
     await context.send(text2)
